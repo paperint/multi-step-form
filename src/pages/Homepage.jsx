@@ -27,7 +27,8 @@ function Homepage() {
     }
   };
 
-  const handleNextStep2 = () => {
+  const handleNextStep2 = (e) => {
+    e.preventDefault();
     if (plan !== false) {
       setCurrentStep(3);
       if (bill === true) {
@@ -46,6 +47,7 @@ function Homepage() {
   };
   return (
     <main className="h-screen bg-light-blue">
+      {/* Mobile Design */}
       <section className="px-8 py-12 lg:hidden">
         <article className="absolute top-0 left-0 w-full">
           <MobileSideBar />
@@ -54,10 +56,10 @@ function Homepage() {
           {numberStep.map((item, index) => (
             <div
               key={index}
-              className={`border rounded-full font-medium w-7 text-white z-10 ${
+              className={`border rounded-full font-medium w-7 z-10 ${
                 currentStep === index + 1
                   ? ` bg-light-blue text-marine-blue`
-                  : ``
+                  : `text-white`
               }`}
             >
               <p className="text-center">{item}</p>
@@ -150,6 +152,9 @@ function Homepage() {
           )}
         </article>
       </section>
+      {/* End Mobile Design */}
+
+      {/* Desktop Design */}
       <section className="flex items-center justify-center h-screen max-lg:hidden">
         <article className="flex justify-center w-full max-w-5xl p-6 bg-white rounded-lg">
           <div className="relative flex gap-5 w-fit">
@@ -163,13 +168,19 @@ function Homepage() {
                   className="flex items-center justify-center gap-5 w-fit"
                 >
                   <div
-                    className={`border rounded-full font-medium flex justify-center items-center w-8 h-8 text-white  z-10${
-                      currentStep === index + 1
-                        ? ` bg-light-blue text-marine-blue`
-                        : ``
+                    className={`border rounded-full font-medium flex justify-center items-center w-8 h-8 z-10${
+                      currentStep === index + 1 ? ` bg-light-blue` : ``
                     }`}
                   >
-                    <p className="text-center">{item}</p>
+                    <p
+                      className={`text-center ${
+                        currentStep === index + 1
+                          ? ` text-marine-blue`
+                          : `text-white`
+                      }`}
+                    >
+                      {item}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-pastel-blue">Step {index + 1}</p>
@@ -275,6 +286,7 @@ function Homepage() {
           </div>
         </article>
       </section>
+      {/* End Desktop Design */}
     </main>
   );
 }
