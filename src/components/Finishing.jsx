@@ -25,8 +25,8 @@ function Finishing({ addons, plan, bill, setCurrentStep }) {
   };
 
   const calculateTotalPrice = () => {
-    const addsonPrice = adds.reduce((sum, item) => sum + item.price, 0);
-    return addsonPrice + planPrice;
+    const addSumPrice = adds.reduce((sum, item) => sum + item.price, 0);
+    return addSumPrice + planPrice;
   };
 
   useEffect(() => {
