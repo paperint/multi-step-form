@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MobileSideBar from "../components/MobileSideBar";
 import PersonalInfo from "../components/PersonalInfo";
 import SelectPlan from "../components/SelectPlan";
@@ -22,7 +22,6 @@ function Homepage() {
   const handleNextStep = () => {
     if (checkFirstStep) {
       setCurrentStep(2);
-      handlerBillAddons();
     } else {
       setCurrentStep(currentStep);
     }
@@ -31,16 +30,13 @@ function Homepage() {
   const handleNextStep2 = () => {
     if (plan !== false) {
       setCurrentStep(3);
+      if (bill === true) {
+        setAddons(AddonYearly);
+      } else {
+        setAddons(AddonMonth);
+      }
     } else {
       setCurrentStep(currentStep);
-    }
-  };
-
-  const handlerBillAddons = () => {
-    if (bill) {
-      setAddons(AddonYearly);
-    } else {
-      setAddons(AddonMonth);
     }
   };
 
@@ -48,7 +44,6 @@ function Homepage() {
     e.preventDefault();
     setCurrentStep(currentStep > 1 ? currentStep - 1 : currentStep);
   };
-
   return (
     <main className="h-screen bg-light-blue">
       <section className="px-8 py-12 lg:hidden">

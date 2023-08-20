@@ -26,15 +26,15 @@ function SelectPlan({ plan, setPlan, bill, setBill }) {
         >
           Monthly
         </p>
-        <label class="relative inline-flex items-center cursor-pointer">
+        <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
             value={bill}
             checked={bill}
-            onChange={() => setBill(!bill)}
-            class="sr-only peer"
+            onChange={(e) => setBill(e.target.checked)}
+            className="sr-only peer"
           />
-          <div class="w-14 h-7 bg-marine-blue peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purplish-blue rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-marine-blue"></div>
+          <div className="w-14 h-7 bg-marine-blue peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purplish-blue rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-marine-blue"></div>
         </label>
         <p
           className={`font-medium  ${
